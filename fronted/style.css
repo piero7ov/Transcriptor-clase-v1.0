@@ -1,0 +1,205 @@
+/* ================= Temas via data-theme (light/dark) ================= */
+html[data-theme="light"] {
+  --bg: #ffffff;
+  --fg: #111827;         /* gris muy oscuro */
+  --muted: #6b7280;      /* gris medio */
+  --card: #ffffff;
+  --border: #e5e7eb;     /* gris claro */
+  --shadow: 0 8px 24px rgba(17, 24, 39, 0.06);
+  --primary: #2563eb;    /* azul */
+  --primary-dark: #1d4ed8;
+  --danger: #dc2626;     /* rojo */
+  --danger-dark: #b91c1c;
+  --ghost: #f3f4f6;      /* gris muy claro */
+}
+
+html[data-theme="dark"] {
+  --bg: #202123;         /* fondo principal (ChatGPT) */
+  --fg: #e5e7eb;         /* texto claro */
+  --muted: #9ca3af;      /* gris medio */
+  --card: #2d2f31;       /* tarjetas (ChatGPT panels) */
+  --border: #3e3f41;     /* bordes */
+  --shadow: 0 8px 24px rgba(0,0,0,0.35);
+  --primary: #3b82f6;    /* azul brillante */
+  --primary-dark: #2563eb;
+  --danger: #ef4444;     /* rojo brillante */
+  --danger-dark: #dc2626;
+  --ghost: #343541;      /* gris intermedio (como sidebar ChatGPT) */
+}
+
+/* =============== Base =============== */
+* { box-sizing: border-box; }
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+}
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* =============== Header =============== */
+.header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+header h1 {
+  margin: 12px 0 4px;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.subtitle {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.theme-toggle { display: flex; align-items: center; }
+
+/* =============== Tarjetas/controles =============== */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  margin-bottom: 16px;
+}
+.controls .row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.wrap { flex-wrap: wrap; }
+
+.radio-group {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 6px 10px;
+  background: var(--ghost);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+.radio input { margin-right: 6px; }
+
+.btn-group { display: flex; gap: 8px; }
+
+/* =============== Botones =============== */
+.btn {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: #f9fafb;
+  color: var(--fg);
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all .15s ease;
+}
+html[data-theme="dark"] .btn { background: #111827; }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+
+.btn.primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff; /* siempre blanco */
+}
+.btn.primary:hover { background: var(--primary-dark); }
+
+.btn.danger {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #fff; /* siempre blanco */
+}
+.btn.danger:hover { background: var(--danger-dark); }
+
+.btn.ghost {
+  background: var(--ghost);
+  color: var(--fg);
+}
+
+/* =============== Campos / labels =============== */
+.field label {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+select {
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--fg);
+}
+
+.checkbox {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 10px;
+  background: var(--ghost);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.status {
+  margin-left: auto;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.hint {
+  margin: 6px 2px 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* =============== Textarea =============== */
+textarea {
+  width: 100%;
+  min-height: 380px;
+  resize: vertical;
+  background: var(--card);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  line-height: 1.55;
+  box-shadow: inset 0 0 0 1px rgba(17,24,39,0.03);
+}
+
+/* =============== Descargas =============== */
+.downloads {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+.link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+.link:hover { text-decoration: underline; }
+
+/* =============== Footer =============== */
+.footer {
+  text-align: center;
+  color: var(--muted);
+  padding-bottom: 24px;
+}
+
+/* =============== Responsive =============== */
+@media (max-width: 640px) {
+  .status { width: 100%; margin: 6px 0 0; }
+  .radio-group { width: 100%; justify-content: center; }
+  .btn-group { width: 100%; flex-wrap: wrap; }
+}

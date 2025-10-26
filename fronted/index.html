@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Transcriptor de Clase</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="container header">
+    <div class="header-row">
+      <div>
+        <h1>Transcriptor de Clase</h1>
+        <p class="subtitle">Transcribe audio del sistema o micrófono en tiempo real.</p>
+      </div>
+
+      <!-- Toggle de tema -->
+      <div class="theme-toggle">
+        <button id="themeBtn" class="btn ghost" title="Cambiar tema">🌙 Modo oscuro</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Controles principales -->
+    <section class="card controls">
+      <div class="row wrap">
+        <div class="radio-group">
+          <label class="radio">
+            <input type="radio" name="audio-source" id="srcSystem" value="system" checked />
+            <span>Audio del sistema (pestaña/pantalla)</span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="audio-source" id="srcMic" value="mic" />
+            <span>Micrófono</span>
+          </label>
+        </div>
+
+        <div class="btn-group">
+          <button id="startBtn" class="btn primary">▶ Empezar</button>
+          <button id="stopBtn"  class="btn danger" disabled>■ Detener</button>
+          <button id="pauseBtn" class="btn">⏸️ Pausar</button>
+          <button id="copyBtn"  class="btn">📋 Copiar</button>
+          <button id="clearBtn" class="btn ghost">🧹 Limpiar caja</button>
+        </div>
+      </div>
+
+      <div class="row wrap">
+        <div class="field">
+          <label for="chunkTime">Tamaño de chunk</label>
+          <select id="chunkTime">
+            <option value="4000" selected>4 s (recomendado)</option>
+            <option value="6000">6 s</option>
+            <option value="8000">8 s</option>
+            <option value="10000">10 s</option>
+          </select>
+        </div>
+
+        <label class="checkbox">
+          <input type="checkbox" id="autoscroll" checked />
+          <span>Autodesplazar</span>
+        </label>
+
+        <p id="status" class="status">Estado: Inactivo</p>
+      </div>
+      <p class="hint">
+        Si capturas “Audio del sistema”, en el diálogo del navegador marca <b>Compartir audio</b>.
+      </p>
+    </section>
+
+    <!-- Transcripción -->
+    <section class="card">
+      <textarea id="transcriptBox" placeholder="Aquí aparecerá la transcripción..." spellcheck="false"></textarea>
+      <div class="downloads">
+        <a class="link" href="http://127.0.0.1:8000/api/transcript.txt" target="_blank">Descargar TXT</a>
+        <a class="link" href="http://127.0.0.1:8000/api/transcript.srt" target="_blank">Descargar SRT</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <small>Hecho con ♥ para tomar mejores apuntes.</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
